@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "consultnn\\yii2\\filestorage\\widget": "src"
+      "consultnn\\yii2\\filestorage\\widget\\": "src"
     }
   },
   "extra": {
