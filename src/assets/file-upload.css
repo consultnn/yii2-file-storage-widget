@@ -1,0 +1,28 @@
+
+.file-custom::before {
+    content: "Обзор" !important;
+}
+
+.file-custom::after {
+    content: "Выберите файл..." !important;
+}
+
+.file-upload-container .previews .preview {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    position: relative;
+    border-radius: 6px;
+    border: solid 1px #e5e5e5;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.file-upload-container .previews .preview .remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    color: red;
+    padding: 4px;
+    cursor: pointer;
+}

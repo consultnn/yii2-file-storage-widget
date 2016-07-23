@@ -1,0 +1,25 @@
+{
+  "name": "consultnn/yii2-file-storage-widget",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maxim Mironyuk",
+      "email": "serieznyi@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "consultnn\\yii2\\filestorage\\widget": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
