@@ -1,10 +1,17 @@
 
-.file-custom::before {
-    content: "Обзор" !important;
-}
-
 .file-custom::after {
     content: "Выберите файл..." !important;
+}
+
+.file-upload-container [type=file]{
+    display: none;
+}
+
+.file-upload-container .file {
+    border-radius: 6px;
+    border: solid 1px #e5e5e5;
+    padding: 0.2em;
+    cursor: pointer;
 }
 
 .file-upload-container .previews .preview {
