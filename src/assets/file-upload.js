@@ -5,7 +5,8 @@
         var self = this;
 
         this.settings = $.extend({
-            uploadUrl: '/site/upload'
+            uploadUrl: '/site/upload',
+            deleteImageCallback: function(self){}
         }, options);
 
         this.$container = element;
@@ -41,7 +42,10 @@
         });
 
         this.$container.on('click', '.remove-btn', function() {
-            $(this).closest('.preview').remove();
+            $(this).closest('.preview').hide();
+            $(this).closest('.preview').find('input').val('');
+            
+            self.settings.deleteImageCallback(self);
         });
     };
 
