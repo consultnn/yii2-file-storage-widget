@@ -1,7 +1,14 @@
 {
   "name": "consultnn/yii2-file-storage-widget",
   "type": "library",
+  "description": "Wrap over consultnn/file-storage-client for Yii2",
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/consultnn/file-storage-client"
+    }
+  ],
   "authors": [
     {
       "name": "Maxim Mironyuk",
@@ -10,11 +17,12 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "~2.0"
+    "yiisoft/yii2": "~2.0",
+    "consultnn/file-storage-client": "dev-issue-1"
   },
   "autoload": {
     "psr-4": {
-      "consultnn\\yii2\\filestorage\\widget\\": "src"
+      "consultnn\\yii2\\filestorage\\": "src"
     }
   },
   "extra": {

@@ -6,16 +6,37 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
 
-class FileUpload extends InputWidget
+/**
+ * Class FileUpload
+ * @package consultnn\yii2\filestorage\widget
+ */
+class FileUploadWidget extends InputWidget
 {
+    /**
+     * Available filters
+     */
     const FILTER_IMAGE = 'image/*';
     const FILTER_AUDIO = 'audio/*';
     const FILTER_VIDEO = 'video/*';
 
+    /**
+     * @var bool
+     */
     public $multiple = false;
+
+    /**
+     * @var string|array
+     */
     public $uploadUrl;
+
+    /**
+     * @var string|array
+     */
     public $filter;
 
+    /**
+     * {@inheritdoc}
+     */
     public function init()
     {
         $this->initClientScript();
@@ -23,6 +44,9 @@ class FileUpload extends InputWidget
         parent::init();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function run()
     {
         $images = Html::getAttributeValue($this->model, $this->attribute);
@@ -31,7 +55,7 @@ class FileUpload extends InputWidget
             'view',
             [
                 'images' => $images,
-                'filter' => $this->filter,
+                'accept' => is_array($this->filter) ? implode(',', $this->filter): $this->filter,
             ]
         );
     }
@@ -39,15 +63,15 @@ class FileUpload extends InputWidget
     private function initClientScript()
     {
         $view = $this->getView();
-        $uploadUrl = is_array($this->uploadUrl) ? Url::to($this->uploadUrl, 'http') : $this->uploadUrl;
+        $uploadUrl = Url::to($this->uploadUrl, 'http');
+        $inputName = Html::getInputName($this->model, $this->attribute) . ($this->multiple ? '[]' : '');
 
         FileUploadAsset::register($view);
 
         $view->registerJs("$('#{$this->id}').fileUpload({
             multiple: ".($this->multiple ? 'true' : 'false').",
             uploadUrl: '{$uploadUrl}',
-            inputName: '".Html::getInputName($this->model, $this->attribute).($this->multiple ? '[]' : '')."'
+            inputName: '{$inputName}'
         });");
-
     }
 }
