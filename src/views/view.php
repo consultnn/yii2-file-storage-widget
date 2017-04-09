@@ -1,18 +1,21 @@
 <?php
 
+use consultnn\filestorage\client\Client;
+use consultnn\yii2\filestorage\widget\FileUploadWidget;
 use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
  * @var array $images
- * @var \backend\widgets\filestorageform\FileUpload $context
+ * @var Client $client
+ * @var FileUploadWidget $context
  */
 $context = $this->context;
 $removeBtn = '<i class="fa fa-remove fa-lg remove-btn"></i>';
 
-$renderPreview = function($image) use ($context){
-    $previewUrl = Yii::$app->fileStorage->get($image, ['w' => 100, 'h' => 100, 'zc' => 1]);
-    $sourceUrl = Yii::$app->fileStorage->get($image, ['w' => 1200]);
+$renderPreview = function($image) use ($context, $client){
+    $previewUrl = $client->makeUrl($image, ['w' => 100, 'h' => 100, 'zc' => 1]);
+    $sourceUrl = $client->makeUrl($image, ['w' => 1200]);
 
     return Html::a(
         Html::img($previewUrl, ['width' => 100, 'height' => 100]),

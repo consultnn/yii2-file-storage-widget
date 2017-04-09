@@ -2,6 +2,7 @@
 
 namespace consultnn\yii2\filestorage\widget;
 
+use consultnn\filestorage\client\Client;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
@@ -35,6 +36,11 @@ class FileUploadWidget extends InputWidget
     public $filter;
 
     /**
+     * @var Client
+     */
+    public $client;
+
+    /**
      * {@inheritdoc}
      */
     public function init()
@@ -46,6 +52,7 @@ class FileUploadWidget extends InputWidget
 
     /**
      * {@inheritdoc}
+     * @throws \yii\base\InvalidParamException
      */
     public function run()
     {
@@ -55,6 +62,7 @@ class FileUploadWidget extends InputWidget
             'view',
             [
                 'images' => $images,
+                'client' => $this->client,
                 'accept' => is_array($this->filter) ? implode(',', $this->filter): $this->filter,
             ]
         );
